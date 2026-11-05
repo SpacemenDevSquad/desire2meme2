@@ -1,5 +1,6 @@
 from pathlib import Path
 from dotenv import dotenv_values
+import secrets
 
 def get_config() -> type:
     package_dir: Path = Path(__file__).parent.resolve()
@@ -12,7 +13,7 @@ def get_config() -> type:
     
     # make sure there is an appropriate value for SECRET_KEY
     if 'SECRET_KEY' not in env or env["SECRET_KEY"] is None:
-        raise ValueError("Config in .appenv must include a SECRET_KEY!")
+        env["SECRET_KEY"] = secrets.token_urlsafe(32)
     
     class Config:
         SECRET_KEY: str = env["SECRET_KEY"]

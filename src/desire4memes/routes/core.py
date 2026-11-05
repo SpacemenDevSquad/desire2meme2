@@ -1,9 +1,10 @@
-from flask import render_template, session, redirect, url_for
+from flask import render_template, session, redirect, url_for, Blueprint
 from flask_login import login_required
 
-from desire4memes.routes import core_bp
 from desire4memes.queries import get_recent_memes, get_oldest_memes
 from desire4memes.forms import MemeForm
+
+core_bp = Blueprint("core", __name__)
 
 @core_bp.get("/")
 def get_index():
