@@ -1,0 +1,25 @@
+/* Set your colors here */
+:root {
+  --red:    #e63946;
+  --blue:   #1d3557;
+  --green:  #2a9d8f;
+  --yellow: #f4d35e;
+  --dark:   #121212;
+  --light:  #f1faee;
+}
+
+/* Background colors */
+.bg-red    { background-color: var(--red); }
+.bg-blue   { background-color: var(--blue)   !important; }
+.bg-green  { background-color: var(--green)  !important; }
+.bg-yellow { background-color: var(--yellow) !important; }
+.bg-dark   { background-color: var(--dark)   !important; }
+.bg-light  { background-color: var(--light)  !important; }
+
+/* Text colors */
+.text-red    { color: var(--red)    !important; }
+.text-blue   { color: var(--blue)   !important; }
+.text-green  { color: var(--green)  !important; }
+.text-yellow { color: var(--yellow) !important; }
+.text-dark   { color: var(--dark)   !important; }
+.text-light  { color: var(--light)  !important; }
