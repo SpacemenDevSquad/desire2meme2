@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/desire4memes"]
+
+[project]
+name = "desire4memes"
+
+version = "0.0.1"
+
+dependencies = [
+    "dotenv>=0.9.9",
+    "Flask>=3.1.0",
+    "Flask-WTF>=1.2.2"
+]
+
+requires-python = ">=3.12"
+
+authors = [
+    {name = "Henry Tan", email = "TanHK22@gcc.edu"},
+    {name = "Peter Brumbach", email = "BrumbachPM23@gcc.edu"},
+]
+
+description = "COMP 422 - Final Project - Desire4Memes"
+readme = "README.md"
