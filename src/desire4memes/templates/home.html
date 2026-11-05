@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Desire4Memes{% endblock %}
+
+{% block head %}
+  {# Page-specific <link>/<meta> tags go here #}
+{% endblock %}
+
+{% block content %}
+  {# Header: title + sort + create button #}
+  <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5">
+    <div>
+      <h1 class="display-5 fw-bold mb-1 text-ink">Fresh Memes</h1>
+      <p class="lead text-dark-gray mb-0">A GCC Meme Page</p>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2">
+      {% set oldest = request.endpoint == 'core.get_home_oldest' %}
+      <div class="btn-group" role="group" aria-label="Sort memes">
+        <a href="{{ url_for('core.get_home') }}"
+           class="btn rounded-0 border-0 fw-semibold {{ 'bg-red text-cream' if not oldest else 'bg-gray text-ink' }}">
+          <i class="bi bi-lightning-fill me-1"></i>Newest
+        </a>
+        <a href="{{ url_for('core.get_home_oldest') }}"
+           class="btn rounded-0 border-0 fw-semibold {{ 'bg-red text-cream' if oldest else 'bg-gray text-ink' }}">
+          <i class="bi bi-hourglass-split me-1"></i>Oldest
+        </a>
+      </div>
+
+      {% if username %}
+        <a href="{{ url_for('core.get_create_meme') }}" class="btn bg-red text-cream fw-bold rounded-0 border-0">
+          <i class="bi bi-plus-lg me-1"></i>Create
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  {# Meme grid #}
+  {% if memes %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-5">
+      {% for meme in memes %}
+        <div class="col">
+          <article class="card h-100 bg-ink text-cream border-0 rounded-0 shadow-dark-red">
+            {# TODO: needs a route that returns meme.image bytes at this URL #}
+            <img src="/meme/{{ meme.id }}/image" class="card-img-top rounded-0 bg-dark-gray"
+                 alt="{{ meme.title }}" loading="lazy">
+            <div class="card-body">
+              <h2 class="h5 card-title fw-bold text-cream mb-1">{{ meme.title }}</h2>
+              {% if meme.caption %}
+                <p class="card-text text-gray mb-0">{{ meme.caption }}</p>
+              {% endif %}
+            </div>
+          </article>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {# Empty state #}
+    <div class="bg-red text-cream rounded-5 text-center p-5 shadow-dark-red">
+      <i class="bi bi-emoji-dizzy display-4 text-yellow d-block mb-3"></i>
+      <h2 class="h4 fw-bold">No memes yet</h2>
+      <p class="text-cream mb-4">It's quiet in here. Too quiet.</p>
+      {% if username %}
+        <a href="{{ url_for('core.get_create_meme') }}" class="btn bg-dark-red text-cream fw-bold rounded-5 border-0">
+          Post the first one
+        </a>
+      {% else %}
+        <a href="{{ url_for('auth.get_login_form') }}" class="btn bg-dark-red text-cream fw-bold rounded-5 border-0">
+          Sign in to post
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}

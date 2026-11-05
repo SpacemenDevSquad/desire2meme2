@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Sign in | Desire4Memes{% endblock %}
+
+{% block head %}
+  {# Page-specific <link>/<meta> tags go here #}
+{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-sm-10 col-md-7 col-lg-5">
+
+      <h1 class="display-5 fw-bold mb-5 text-ink">Sign in</h1>
+
+      {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+          <div class="alert bg-red text-cream border-0 rounded-5 fw-semibold">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ message }}
+          </div>
+        {% endfor %}
+      {% endwith %}
+
+      <div class="card bg-red text-cream border-0 rounded-5 shadow-dark-red mb-4" data-bs-theme="light">
+        <div class="card-body p-4">
+          <form method="post" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+              {{ form.username.label(class_="form-label fw-semibold text-cream") }}
+              {{ form.username(class_="form-control rounded-0 border-0", autocomplete="username", autofocus=true) }}
+            </div>
+
+            <div class="mb-4">
+              {{ form.password.label(class_="form-label fw-semibold text-cream") }}
+              {{ form.password(class_="form-control rounded-0 border-0", type="password", autocomplete="current-password") }}
+            </div>
+
+            {{ form.submit(class_="btn bg-dark-red text-cream fw-bold rounded-5 border-0 w-100 py-2") }}
+          </form>
+        </div>
+      </div>
+
+      <p class="text-ink text-center mt-5">
+        No account yet?
+        <a class="text-red fw-semibold" href="{{ url_for('auth.get_signup_form') }}">Make one</a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

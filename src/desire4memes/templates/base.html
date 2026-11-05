@@ -19,9 +19,9 @@
 
   {% block head %}{% endblock %}
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex bg-cream flex-column min-vh-100">
 
-  {{ navbar(active=active_page | default('')) }}
+  {{ navbar() }}
 
   <main class="flex-grow-1 {% block main_class %}container py-5{% endblock %}">
     {% block content %}{% endblock %}
