@@ -35,6 +35,11 @@
               {{ form.password(class_="form-control rounded-0 border-0", type="password", autocomplete="new-password") }}
             </div>
 
+            <div class="mb-4">
+              {{ form.confirm_password.label(class_="form-label fw-semibold text-cream") }}
+              {{ form.confirm_password(class_="form-control rounded-0 border-0", type="password", autocomplete="new-password") }}
+            </div>
+
             {{ form.submit(class_="btn bg-dark-red text-cream fw-bold rounded-5 border-0 w-100 py-2") }}
           </form>
         </div>
