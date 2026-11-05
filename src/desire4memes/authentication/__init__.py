@@ -1,1 +1,1 @@
-from desire4memes.authentication.authentication import Hasher
+from desire4memes.authentication.hashing import Hasher

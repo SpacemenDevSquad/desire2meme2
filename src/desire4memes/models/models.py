@@ -16,7 +16,6 @@ class Meme(db.Model):
 
 class User(db.Model):
     __tablename__ = "users"
-    id: Mapped[int] = mapped_column(Integer, primary_key = True)
-    username: Mapped[str] = mapped_column(String(64))
-    password: Mapped[str] = mapped_column(String(64))
+    username: Mapped[str] = mapped_column(String(64), primary_key = True)
+    password: Mapped[bytes] = mapped_column(LargeBinary)
     memes: Mapped[list[Meme]] = relationship(lazy = "dynamic")
