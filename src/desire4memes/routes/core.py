@@ -1,8 +1,9 @@
-from flask import render_template, session, flash, redirect, url_for
+from flask import render_template, session, redirect, url_for
 from flask_login import login_required
 
 from desire4memes.routes import core_bp
-from desire4memes.forms import CreateMemeForm
+from desire4memes.queries import get_recent_memes, get_oldest_memes
+from desire4memes.forms import MemeForm
 
 @core_bp.get("/")
 def get_index():
@@ -11,19 +12,29 @@ def get_index():
 @core_bp.get("/home")
 def get_home():
     username: str | None = session.get("username")
-    return render_template("home.html", username = username)
+    return render_template("home.html", username = username, memes = get_recent_memes())
+
+@core_bp.get("/home/oldest")
+def get_home_oldest():
+    username: str | None = session.get("username")
+    return render_template("home.html", username = username, memes = get_oldest_memes())
 
 @core_bp.get("/create")
 @login_required
 def get_create_meme():
-    form = CreateMemeForm()
+    form = MemeForm()
     return render_template("create_meme.html", form = form)
 
 @core_bp.post("/create")
 @login_required
 def post_create_meme():
-    form = CreateMemeForm()
+    form = MemeForm()
     return redirect(url_for("/home"))
+
+@core_bp.get("/account")
+@login_required
+def get_account():
+    return render_template("acount.html")
 
 @core_bp.get("/settings")
 @login_required

@@ -6,7 +6,7 @@ from flask_login import login_user, logout_user, login_required
 from desire4memes.routes import auth_bp
 from desire4memes.forms import SignUpForm, LoginForm
 from desire4memes.extensions import db
-from desire4memes.models import User, Post
+from desire4memes.models import User
 
 # TODO: Implement Argon, password hashing, salting, and peppering
 

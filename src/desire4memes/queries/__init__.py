@@ -1,0 +1,1 @@
+from desire4memes.queries.feed import get_recent_memes, get_oldest_memes
