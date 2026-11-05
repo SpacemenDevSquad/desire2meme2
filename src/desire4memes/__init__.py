@@ -18,12 +18,10 @@ def create_app(config: Any = None):
     from desire4memes.extensions import lm
     lm.init_app(app)
 
-    from desire4memes.routes import core_bp, auth_bp
-
-    app.register_blueprint(core_bp, url_prefix = "")
-    app.register_blueprint(auth_bp, url_prefix = "")
-
     with app.app_context():
         db.create_all()
+
+    from desire4memes.routes import register_routes
+    register_routes(app)
 
     return app
