@@ -5,7 +5,9 @@ from sqlalchemy.exc import IntegrityError
 from desire4memes.routes import auth_bp
 from desire4memes.forms import SignUpForm, LoginForm
 from desire4memes.extensions import db
-from desire4memes.models import User
+from desire4memes.models import User, Post
+
+# TODO: Implement Argon, password hashing, salting, and peppering
 
 @auth_bp.get('/signup')
 def get_signup_form():

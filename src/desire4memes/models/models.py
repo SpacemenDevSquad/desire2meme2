@@ -1,4 +1,6 @@
-from sqlalchemy import String, Integer, LargeBinary
+from typing import Any, Dict
+
+from sqlalchemy import String, Integer, LargeBinary, JSON
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from desire4memes.extensions import db
@@ -8,13 +10,13 @@ class User(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
     username: Mapped[str] = mapped_column(String(64))
     password: Mapped[str] = mapped_column(String(64))
+    posts: Mapped[list[int]] = relationship(lazy = "dynamic")
 
 class Post(db.Model):
     __tablename__ = "posts"
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
+    user_id: Mapped[int] = mapped_column(Integer, db.ForeignKey("users.id"))
     title: Mapped[str] = mapped_column(String(64))
     image: Mapped[bytes] = mapped_column(LargeBinary)
-    toptext: Mapped[str] = mapped_column(String(64))
-    bottomtext: Mapped[str] = mapped_column(String(64))
+    fabric: Mapped[Dict[str, Any]] = mapped_column(JSON, nullable = True)
     caption: Mapped[str] = mapped_column(String(128))
-    user: Mapped[User] = relationship(viewonly = True, lazy = "dynamic")
