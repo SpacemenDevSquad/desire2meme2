@@ -1,0 +1,29 @@
+<!doctype html>
+{% from "partials/navbar.html" import navbar %}
+{% from "partials/footer.html" import footer %}
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Desire4Memes{% endblock %}</title>
+
+  <!-- Bootstrap 5.3.8 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  {% block head %}{% endblock %}
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  {{ navbar(active=active_page | default('')) }}
+
+  <main class="flex-grow-1 {% block main_class %}container py-5{% endblock %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  {{ footer() }}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

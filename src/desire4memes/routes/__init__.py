@@ -1,7 +1,9 @@
-from flask import Blueprint
+"""
+Routes
+"""
 
-core_bp = Blueprint("core", __name__)
-auth_bp = Blueprint("auth", __name__)
-
-import desire4memes.routes.core
-import desire4memes.routes.auth
+def register_routes(app):
+    from .auth import auth_bp
+    app.register_blueprint(auth_bp)
+    from .core import core_bp
+    app.register_blueprint(core_bp)
