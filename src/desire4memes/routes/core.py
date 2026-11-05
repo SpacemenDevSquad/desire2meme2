@@ -21,7 +21,7 @@ def get_create_meme():
 
 @core_bp.post("/create")
 @login_required
-def get_create_meme():
+def post_create_meme():
     form = CreateMemeForm()
     return redirect(url_for("/home"))
 
