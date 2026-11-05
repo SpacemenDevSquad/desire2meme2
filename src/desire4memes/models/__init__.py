@@ -1,0 +1,1 @@
+from desire4memes.models.models import User
