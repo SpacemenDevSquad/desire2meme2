@@ -5,14 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from desire4memes.extensions import db
 
-class User(db.Model):
-    __tablename__ = "users"
-    id: Mapped[int] = mapped_column(Integer, primary_key = True)
-    username: Mapped[str] = mapped_column(String(64))
-    password: Mapped[str] = mapped_column(String(64))
-    posts: Mapped[list[int]] = relationship(lazy = "dynamic")
-
-class Post(db.Model):
+class Meme(db.Model):
     __tablename__ = "posts"
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
     user_id: Mapped[int] = mapped_column(Integer, db.ForeignKey("users.id"))
@@ -20,3 +13,10 @@ class Post(db.Model):
     image: Mapped[bytes] = mapped_column(LargeBinary)
     fabric: Mapped[Dict[str, Any]] = mapped_column(JSON, nullable = True)
     caption: Mapped[str] = mapped_column(String(128))
+
+class User(db.Model):
+    __tablename__ = "users"
+    id: Mapped[int] = mapped_column(Integer, primary_key = True)
+    username: Mapped[str] = mapped_column(String(64))
+    password: Mapped[str] = mapped_column(String(64))
+    memes: Mapped[list[Meme]] = relationship(lazy = "dynamic")

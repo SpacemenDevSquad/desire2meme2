@@ -1,1 +1,1 @@
-from desire4memes.models.models import User, Post
+from desire4memes.models.models import User, Meme
