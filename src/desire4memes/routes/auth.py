@@ -31,7 +31,7 @@ def post_signup_form():
 
             assert username is not None and password is not None
 
-            new_user: User = User(username = username, password = hasher.hash(password))
+            new_user: User = User(username = username, password = hasher.hash(password), is_admin = False)
 
             db.session.add(new_user)
             db.session.commit()

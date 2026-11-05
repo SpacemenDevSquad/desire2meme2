@@ -1,16 +1,17 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms.fields import StringField, SubmitField
-from wtforms.validators import DataRequired, Optional
+from wtforms.fields import StringField, SubmitField, PasswordField
+from wtforms.validators import DataRequired, Optional, EqualTo
 
 class SignUpForm(FlaskForm):
     username = StringField("Username:", validators = [DataRequired()])
-    password = StringField("Password:", validators = [DataRequired()])
+    password = PasswordField("Password:", validators = [DataRequired()])
+    confirm_password = PasswordField("Confirm Password:", validators = [DataRequired(), EqualTo("password", "Must Match Your Chosen Password")])
     submit = SubmitField("Sign Up")
 
 class LoginForm(FlaskForm):
     username = StringField("Username:", validators = [DataRequired()])
-    password = StringField("Password:", validators = [DataRequired()])
+    password = PasswordField("Password:", validators = [DataRequired()])
     submit = SubmitField("Login")
 
 class MemeForm(FlaskForm):
