@@ -8,11 +8,11 @@ from desire4memes.extensions import db
 class Meme(db.Model):
     __tablename__ = "posts"
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
-    user_id: Mapped[int] = mapped_column(Integer, db.ForeignKey("users.id"))
+    user_id: Mapped[str] = mapped_column(String(64), db.ForeignKey("users.id"))
     title: Mapped[str] = mapped_column(String(64))
     image: Mapped[bytes] = mapped_column(LargeBinary)
     fabric: Mapped[Dict[str, Any]] = mapped_column(JSON, nullable = True)
-    caption: Mapped[str] = mapped_column(String(128))
+    caption: Mapped[str] = mapped_column(String(128), nullable = True)
 
 class User(db.Model):
     __tablename__ = "users"
