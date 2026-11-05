@@ -10,7 +10,7 @@ def InitializeLoginManager(LoginManager: LoginManager, app: Flask):
     LoginManager.init_app(app)
     LoginManager.session_protection = "strong"
 
-    from models import User
+    from desire4memes.models import User
     @LoginManager.user_loader
     def load_user(uid: str) -> User | None:
         return get_user(uid=int(uid))
