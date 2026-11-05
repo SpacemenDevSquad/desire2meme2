@@ -12,5 +12,5 @@ class LoginForm(FlaskForm):
     password = StringField("Password:", validators = [DataRequired()])
     submit = SubmitField("Login")
 
-class CreateMemeForm(FlaskForm):
+class MemeForm(FlaskForm):
     submit = SubmitField("Login")
