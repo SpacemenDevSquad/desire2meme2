@@ -1,1 +1,1 @@
-from desire4memes.forms.forms import SignUpForm, LoginForm
+from desire4memes.forms.forms import SignUpForm, LoginForm, CreateMemeForm

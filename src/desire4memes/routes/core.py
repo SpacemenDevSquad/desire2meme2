@@ -1,7 +1,31 @@
 from flask import render_template, session, flash, redirect, url_for
+from flask_login import login_required
 
 from desire4memes.routes import core_bp
+from desire4memes.forms import CreateMemeForm
 
-@core_bp.get('/')
+@core_bp.get("/")
 def get_index():
-    return # render_template("index.html")
+    return redirect(url_for("get_home"))
+
+@core_bp.get("/home")
+def get_home():
+    username: str | None = session.get("username")
+    return render_template("home.html", username = username)
+
+@core_bp.get("/create")
+@login_required
+def get_create_meme():
+    form = CreateMemeForm()
+    return render_template("create_meme.html", form = form)
+
+@core_bp.post("/create")
+@login_required
+def get_create_meme():
+    form = CreateMemeForm()
+    return redirect(url_for("/home"))
+
+@core_bp.get("/settings")
+@login_required
+def get_settings():
+    return render_template("settings.html")
