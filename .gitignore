@@ -222,3 +222,6 @@ __marimo__/
 
 # Database
 data.db
+
+# Authentication
+pepper.bin
