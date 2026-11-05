@@ -1,25 +1,74 @@
 /* Set your colors here */
 :root {
-  --red:    #e63946;
-  --blue:   #1d3557;
-  --green:  #2a9d8f;
-  --yellow: #f4d35e;
-  --dark:   #121212;
-  --light:  #f1faee;
+  --dark:        #000000;
+  --dark-blue:   #1D2B53;
+  --dark-red:    #7E2553;
+  --dark-green:  #008751;
+  --brown:       #AB5236;
+  --dark-gray:   #5F574F;
+  --gray:        #C2C3C7;
+  --light:       #FFF1E8;
+  --red:         #FF004D;
+  --orange:      #FFA300;
+  --yellow:      #FFEC27;
+  --green:       #00E436;
+  --blue:        #29ADFF;
+  --lavender:    #83769C;
+  --pink:        #FF77A8;
+  --peach:       #FFCCAA;
 }
 
-/* Background colors */
-.bg-red    { background-color: var(--red); }
-.bg-blue   { background-color: var(--blue)   !important; }
-.bg-green  { background-color: var(--green)  !important; }
-.bg-yellow { background-color: var(--yellow) !important; }
-.bg-dark   { background-color: var(--dark)   !important; }
-.bg-light  { background-color: var(--light)  !important; }
+/* Background colors
+   (white/black are named cream/ink because Bootstrap already owns
+   bg-white, bg-black, text-white and text-black) */
+.bg-ink          { --fill: var(--dark); background-color: var(--fill); }
+.bg-dark-blue    { --fill: var(--dark-blue); background-color: var(--fill); }
+.bg-dark-red     { --fill: var(--dark-red); background-color: var(--fill); }
+.bg-dark-green   { --fill: var(--dark-green); background-color: var(--fill); }
+.bg-brown        { --fill: var(--brown); background-color: var(--fill); }
+.bg-dark-gray    { --fill: var(--dark-gray); background-color: var(--fill); }
+.bg-gray         { --fill: var(--gray); background-color: var(--fill); }
+.bg-cream        { --fill: var(--light); background-color: var(--fill); }
+.bg-red          { --fill: var(--red); background-color: var(--fill); }
+.bg-orange       { --fill: var(--orange); background-color: var(--fill); }
+.bg-yellow       { --fill: var(--yellow); background-color: var(--fill); }
+.bg-green        { --fill: var(--green); background-color: var(--fill); }
+.bg-blue         { --fill: var(--blue); background-color: var(--fill); }
+.bg-lavender     { --fill: var(--lavender); background-color: var(--fill); }
+.bg-pink         { --fill: var(--pink); background-color: var(--fill); }
+.bg-peach        { --fill: var(--peach); background-color: var(--fill); }
 
 /* Text colors */
-.text-red    { color: var(--red)    !important; }
-.text-blue   { color: var(--blue)   !important; }
-.text-green  { color: var(--green)  !important; }
-.text-yellow { color: var(--yellow) !important; }
-.text-dark   { color: var(--dark)   !important; }
-.text-light  { color: var(--light)  !important; }
+.text-ink        { --text: var(--dark); color: var(--text); }
+.text-dark-blue  { --text: var(--dark-blue); color: var(--text); }
+.text-dark-red   { --text: var(--dark-red); color: var(--text); }
+.text-dark-green { --text: var(--dark-green); color: var(--text); }
+.text-brown      { --text: var(--brown); color: var(--text); }
+.text-dark-gray  { --text: var(--dark-gray); color: var(--text); }
+.text-gray       { --text: var(--gray); color: var(--text); }
+.text-cream      { --text: var(--light); color: var(--text); }
+.text-red        { --text: var(--red); color: var(--text); }
+.text-orange     { --text: var(--orange); color: var(--text); }
+.text-yellow     { --text: var(--yellow); color: var(--text); }
+.text-green      { --text: var(--green); color: var(--text); }
+.text-blue       { --text: var(--blue); color: var(--text); }
+.text-lavender   { --text: var(--lavender); color: var(--text); }
+.text-pink       { --text: var(--pink); color: var(--text); }
+.text-peach      { --text: var(--peach); color: var(--text); }
+
+/* Buttons keep their bg- and text- colors when hovered or clicked */
+.btn[class*="bg-"]   { --bs-btn-bg: var(--fill); --bs-btn-hover-bg: var(--fill); --bs-btn-active-bg: var(--fill); }
+.btn[class*="text-"] { --bs-btn-color: var(--text); --bs-btn-hover-color: var(--text); --bs-btn-active-color: var(--text); }
+
+/* Shadows */
+.shadow-dark-red {
+  box-shadow: 0 10px 0 var(--dark-red);
+  transition-duration: 0.3s;
+}
+.shadow-dark-red:hover { box-shadow: 0 15px 0 var(--dark-red); }
+
+.shadow-dark-blue {
+  box-shadow: 0 10px 0 var(--dark-blue);
+  transition-duration: 0.3s;
+}
+.shadow-dark-blue:hover { box-shadow: 0 15px 0 var(--dark-blue); }

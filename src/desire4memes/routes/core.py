@@ -14,7 +14,8 @@ core_bp = Blueprint("core", __name__)
 
 @core_bp.get("/")
 def get_index():
-    return redirect(url_for("core.get_home"))
+    username: str | None = session.get("username")
+    return render_template("landing.html")
 
 @core_bp.get("/home")
 def get_home():
