@@ -8,7 +8,7 @@ def get_config() -> type:
     
     db_file: Path = project_dir / "data.db"
 
-    from desire4memes.extensions import hasher
+    from desire4memes.extensions import Hasher
     from desire4memes.authentication import Hasher
     
     pep_file: Path = project_dir / "pepper.bin"

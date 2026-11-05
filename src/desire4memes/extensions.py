@@ -5,7 +5,7 @@ from desire4memes.authentication import Hasher
 
 db = SQLAlchemy()
 lm = LoginManager()
-hasher = Hasher()
+hasher = Hasher
 
 
 def InitializeLoginManager(LoginManager: LoginManager, app: Flask):
