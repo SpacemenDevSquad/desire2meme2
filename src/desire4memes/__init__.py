@@ -15,6 +15,9 @@ def create_app(config: Any = None):
     from desire4memes.extensions import db
     db.init_app(app)
 
+    from desire4memes.extensions import lm
+    lm.init_app(app)
+
     from desire4memes.routes import core_bp, auth_bp
 
     app.register_blueprint(core_bp, url_prefix = "")
