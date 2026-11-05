@@ -3,22 +3,25 @@ from flask_login import login_required
 
 from desire4memes.queries import get_recent_memes, get_oldest_memes
 from desire4memes.forms import MemeForm
+from desire4memes.extensions import db, lm
 
 core_bp = Blueprint("core", __name__)
 
 @core_bp.get("/")
 def get_index():
-    return redirect(url_for("get_home"))
+    return redirect(url_for("core.get_home"))
 
 @core_bp.get("/home")
 def get_home():
     username: str | None = session.get("username")
-    return render_template("home.html", username = username, memes = get_recent_memes())
+    # return render_template("home.html", username = username, memes = get_recent_memes())
+    return render_template("landing.html")
 
 @core_bp.get("/home/oldest")
 def get_home_oldest():
     username: str | None = session.get("username")
-    return render_template("home.html", username = username, memes = get_oldest_memes())
+    # return render_template("home.html", username = username, memes = get_oldest_memes())
+    return render_template("landing.html")
 
 @core_bp.get("/create")
 @login_required
