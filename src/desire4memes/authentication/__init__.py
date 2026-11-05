@@ -1,0 +1,1 @@
+from desire4memes.authentication.authentication import Hasher

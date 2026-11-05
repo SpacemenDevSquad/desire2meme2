@@ -6,8 +6,18 @@ def get_config() -> type:
     package_dir: Path = Path(__file__).parent.resolve()
     project_dir: Path = package_dir.parent.parent.resolve()
     
-    dbFile:  Path = project_dir / "data.db"
+    db_file: Path = project_dir / "data.db"
 
+    from desire4memes.extensions import hasher
+    from desire4memes.authentication import Hasher
+    
+    pep_file: Path = project_dir / "pepper.bin"
+
+    with open(pep_file, 'rb') as fin:
+        pepper_key = fin.read()
+
+    hasher = Hasher(pepper_key)
+    
     appenv_path: Path = project_dir / ".appenv"
     env: dict[str, str | None] = dotenv_values(appenv_path)
     
@@ -17,6 +27,6 @@ def get_config() -> type:
     
     class Config:
         SECRET_KEY: str = env["SECRET_KEY"]
-        SQLALCHEMY_DATABASE_URI: str = f"sqlite:///{dbFile}"
+        SQLALCHEMY_DATABASE_URI: str = f"sqlite:///{db_file}"
     
     return Config

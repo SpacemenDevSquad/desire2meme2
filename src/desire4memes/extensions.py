@@ -1,9 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask import Flask
+from desire4memes.authentication import Hasher
 
 db = SQLAlchemy()
 lm = LoginManager()
+hasher = Hasher()
 
 
 def InitializeLoginManager(LoginManager: LoginManager, app: Flask):
