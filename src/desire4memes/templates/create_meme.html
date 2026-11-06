@@ -5,34 +5,28 @@
 {% block head %}
   {# Page-specific <link>/<meta> tags go here #}
   <!-- Import Fabric.js v6 (Global UMD version) -->
-  <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
-
-  <script src = "{{ url_for('static', filename='js/create_meme.js') }}"></script>
+  <script src = "https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
 {% endblock %}
 
 {% block content %}
   {# Header: title + sort + create button #}
-  <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5">
+  <div class = "d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5">
     <div>
-      <h1 class="display-5 fw-bold mb-1 text-ink">Create a Meme</h1>
+      <h1 class = "display-5 fw-bold mb-1 text-ink">Create a Meme</h1>
+      <div class = "mb-1">Upload a Meme Background:<input type = "file" id = "add_meme_background" accept = "image/*"></div>
     </div>
 
-    <canvas id = "meme" width = "400" height = "200"></canvas>
+    <canvas class = "d-inline-block border" id = "meme" width = "800" height = "500"></canvas>
 
-    <script>
-        // Initialize the Fabric canvas wrapper
-        const canvas = new fabric.Canvas("meme", { backgroundColor: "#f0f0f0" });
+    <div class = "d-inline-block">
+        <ul class="list-unstyled d-flex flex-column gap-2">
+            <button class = "btn rounded-0 border-0 fw-semibold bg-red text-cream" id = "add_rect">Add Rectangle</button>
+            <button class = "btn rounded-0 border-0 fw-semibold bg-red text-cream" id = "add_ellipse">Add Ellipse</button>
+            <button class = "btn rounded-0 border-0 fw-semibold bg-red text-cream" id = "add_textbox">Add Textbox</button>
+            <button class = "btn rounded-0 border-0 fw-semibold bg-red text-cream" id = "delete"><i class="bi bi-trash"></i></button>
+        </ul>
+    </div>
 
-        // Add a simple blue rectangle
-        const rect = new fabric.Rect({
-            left: 100,
-            top: 100,
-            fill: "blue",
-            width: 60,
-            height: 60
-        });
-
-        canvas.add(rect);
-    </script>
+    <script type = "module" src = "{{ url_for('static', filename='js/create_meme.js') }}"></script>
   </div>
 {% endblock %}
