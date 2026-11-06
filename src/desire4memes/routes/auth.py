@@ -36,7 +36,7 @@ def post_signup_form():
             db.session.add(new_user)
             db.session.commit()
 
-            return redirect(url_for("auth.get_login_form")),
+            return redirect(url_for("auth.get_login_form")), 302
         
         except IntegrityError:
             flash("Database Issue")
@@ -60,16 +60,17 @@ def post_login_form():
 
     if form.validate():
         username: str | None = cast(str, form.username.data)
+        print(username)
         password: str | None = cast(str, form.password.data)
 
         assert username is not None and password is not None
 
         user: User | None = get_user(username)
 
-        if user is None:
+        if user is not None:
             if hasher.check(password, user.password):
-                login_user(username)
-                return redirect(url_for("core.get_feed"))
+                login_user(user)
+                return redirect(url_for("core.get_home")), 302
             else:
                 flash("Incorrect Password")
         else:

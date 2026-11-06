@@ -1,2 +1,2 @@
-from desire4memes.queries.feed import get_recent_memes, get_oldest_memes
+from desire4memes.queries.feed import get_recent_memes, get_recent_memes_with_start, get_oldest_memes, get_oldest_memes_with_start
 from desire4memes.queries.user import get_user, get_user_memes
