@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Desire4Memes{% endblock %}
+
+{% block head %}
+  {# Page-specific <link>/<meta> tags go here #}
+  <!-- Import Fabric.js v6 (Global UMD version) -->
+  <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
+
+  <script src = "{{ url_for('static', filename='js/create_meme.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+  {# Header: title + sort + create button #}
+  <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5">
+    <div>
+      <h1 class="display-5 fw-bold mb-1 text-ink">Create a Meme</h1>
+    </div>
+
+    <canvas id = "meme" width = "400" height = "200"></canvas>
+
+    <script>
+        // Initialize the Fabric canvas wrapper
+        const canvas = new fabric.Canvas("meme", { backgroundColor: "#f0f0f0" });
+
+        // Add a simple blue rectangle
+        const rect = new fabric.Rect({
+            left: 100,
+            top: 100,
+            fill: "blue",
+            width: 60,
+            height: 60
+        });
+
+        canvas.add(rect);
+    </script>
+  </div>
+{% endblock %}
