@@ -5,7 +5,7 @@ from pwdlib.hashers.argon2 import Argon2Hasher
 class Hasher:
     def __init__(self, pepper_key: bytes):
         self.pepper = Fernet(pepper_key)
-        self.pwd_hash = PasswordHash((Argon2Hasher(),))
+        self.pwd_hash = PasswordHash([Argon2Hasher()])
 
     def hash(self, password: str) -> bytes:
         hash: str = self.pwd_hash.hash(password)
