@@ -1,8 +1,8 @@
 from typing import cast
 
-from flask import render_template, session, flash, redirect, url_for, Blueprint
+from flask import render_template, flash, redirect, url_for, Blueprint
 from sqlalchemy.exc import IntegrityError
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user, AnonymousUserMixin
 
 from desire4memes.forms import SignUpForm, LoginForm
 from desire4memes.extensions import db, hasher
@@ -14,6 +14,9 @@ from desire4memes.queries import get_user
 ###########################################################
 
 auth_bp = Blueprint("auth", __name__)
+
+def is_logged_in() -> bool:
+    return current_user.is_authenticated
 
 @auth_bp.get("/signup")
 def get_signup_form():
@@ -60,7 +63,6 @@ def post_login_form():
 
     if form.validate():
         username: str | None = cast(str, form.username.data)
-        print(username)
         password: str | None = cast(str, form.password.data)
 
         assert username is not None and password is not None
@@ -86,4 +88,4 @@ def post_login_form():
 @login_required
 def get_logout():
     logout_user()
-    return redirect(url_for("get_home"))
+    return redirect(url_for("core.get_home"))

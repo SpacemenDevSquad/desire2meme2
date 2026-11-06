@@ -3,3 +3,5 @@ def register_routes(app):
     app.register_blueprint(auth_bp)
     from .core import core_bp
     app.register_blueprint(core_bp)
+
+from desire4memes.routes.auth import is_logged_in
