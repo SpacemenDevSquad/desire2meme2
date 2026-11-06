@@ -10,16 +10,21 @@
 
 {% block content %}
   {# Header: title + sort + create button #}
-  <div class = "d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5">
+  <div class = "align-items-end justify-content-between gap-3 mb-5">
     <div>
       <h1 class = "display-5 fw-bold mb-1 text-ink">Create a Meme</h1>
-      <div class = "mb-1">Upload a Meme Background:<input type = "file" id = "add_meme_background" accept = "image/*"></div>
+      <div class = "mb-1">
+        <h3 class="text-ink">Upload a Meme Background:</h3>
+        <input class="text-ink" type = "file" id = "add_meme_background" accept = "image/*">
+      </div>
     </div>
 
-    <canvas class = "d-inline-block border" id = "meme" width = "800" height = "500"></canvas>
+    <div class="container-fluid mt-4 mb-4">
+      <canvas class="border mx-auto" id="meme"></canvas>
+    </div>
 
-    <div class = "d-inline-block">
-        <ul class="list-unstyled d-flex flex-column gap-2">
+    <div class = "d-inline-block m-2">
+        <ul class="d-flex flex-column gap-2">
             <button class = "btn rounded-0 border-0 fw-semibold bg-red text-cream" id = "add_rect">Add Rectangle</button>
             <button class = "btn rounded-0 border-0 fw-semibold bg-red text-cream" id = "add_ellipse">Add Ellipse</button>
             <button class = "btn rounded-0 border-0 fw-semibold bg-red text-cream" id = "add_textbox">Add Textbox</button>
