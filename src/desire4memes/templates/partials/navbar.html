@@ -19,6 +19,11 @@
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">      
         {% if user %}
+          {% if user.is_admin %}
+            <li class="nav-item">
+              <p>Admin</p>
+            </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link {{ 'active' if active == 'user' }}" href="{{ url_for('core.get_account') }}">
               <i class="bi bi-person-circle me-1"></i>{{ user.username }}
